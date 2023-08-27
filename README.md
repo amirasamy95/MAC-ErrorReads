@@ -6,7 +6,7 @@ MAC-ErrorReads is a Machine Learning-Assisted Classifier for Filtering Erroneous
 # Tools
 
 # Data
-
+we are using two different datasets.The first dataset used in our experiments is Escherichia coli str. K-12 substr. MG1655 (E.coli) with RefSeq accession entry NC_000913. The second  dataset used in our experiments is S. aureus genome from the GAGE project. 
 
 # License
 This repository is under MIT license.
