@@ -1,2 +1,2 @@
 # MAC-ErrorReads
-## What is MAC-ErrorReads?
+What is MAC-ErrorReads?
