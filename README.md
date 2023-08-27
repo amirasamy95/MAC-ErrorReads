@@ -14,7 +14,7 @@ We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble t
 
 We also used QUAST (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.
 
-We are finally using Lighter (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data.
+We are finally using Lighter (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data.We are using Lighter to correct the error reads.
 
 
 
