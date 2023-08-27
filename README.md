@@ -4,7 +4,9 @@ MAC-ErrorReads is a machine learning-assisted classifier for filtering erroneous
 # Usage
 We are using MAC-ErrorReads to classify the sequencing reads as error-free or error redas. We first train our models using simulated datasets. We used the Wesim simulator to simulate our data, and after simulating the data, we split the data into training and testing.
 
-We train different machine learning classifiers: Naive Bayes (NB), Support Vector Machine (SVM), Random Forest (RF), Logistic Regression (LR), and Extreme Gradient Boosting (XGBoost) to filter correct or erroneous reads. The models are trained on a labelled data set that has correct reads with label 0 and erroneous reads with label 1. We trained machine learning models using two reference genomes, and the training process could be generalised to different genomes with similar training steps.
+Before the training step, we extract all k-mers from all reads and compute the TF-IDF for all k-mers as a feature extraction to represent a set of training features that feed into different machine algorithms for classifying each read as erroneous or error-free.
+
+We train different machine learning classifiers: Naive Bayes (NB), Support Vector Machine (SVM), Random Forest (RF), Logistic Regression (LR), and Extreme Gradient Boosting (XGBoost) to filter correct or erroneous reads using different k-mer size . The models are trained on a labelled data set that has correct reads with label 0 and erroneous reads with label 1. We trained machine learning models using two reference genomes, and the training process could be generalised to different genomes with similar training steps.
 
 To evaluate the efficacy of our trained models, we employed reads obtained from simulated data and real sequencing experiments that corresponded to the previously trained reference genomes.
 
