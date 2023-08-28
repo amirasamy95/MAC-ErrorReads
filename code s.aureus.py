@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 from sklearn import preprocessing
 import numpy as np
 import pandas as pd
@@ -18,18 +12,11 @@ import xgboost as xgb
 from xgboost.sklearn import XGBClassifier 
 from sklearn.pipeline import Pipeline
 
-
-# In[2]:
-
-
 #read the simulated dataset files to use it in train and test
 errorfile1=open("/home/citc/data/erer1.fastq")
 errorfile2=open("/home/citc/data/erer2.fastq")
 errorfreefile1=open("/home/citc/data/eeff1.fastq")
 errorfreefile2=open("/home/citc/data/eeff2.fastq")
-
-
-# In[1]:
 
 
 # to pares fastq files reads
@@ -63,16 +50,10 @@ def parsename(fastqfile1):
     return readsname
 
 
-# In[4]:
-
-
 errorreadsfile1=parse(errorfreefile1)
 errorreadsfile2=parse(errorfreefile2)
 erfreereadsfile1=parse(errorfile1)
 erfreereadsfile2=parse(errorfile2)
-
-
-# In[8]:
 
 
 for i in errorreadsfile2:
@@ -105,9 +86,6 @@ ytaa2=label2[300000:]
 ytest= np.concatenate((yta1,ytaa2))
 
 
-# In[9]:
-
-
 # to compute the k-mer of all data using specific k-mer size
 def kmers(read, k):
     count = []
@@ -118,10 +96,7 @@ def kmers(read, k):
     return counts 
 
 
-# In[11]:
-
-
-#compute the k-mer of training dataset using k-mer size 15(we used different k-mer size)
+#compute the k-mer of training dataset using k-mer size 15
 kmertrain=[]
 for i in train1:
     x= kmers(i,15)
@@ -131,9 +106,6 @@ kmertrain1=[]
 for i in kmertrain:
     o=  ' '.join(i) 
     kmertrain1.append(o) 
-
-
-# In[13]:
 
 
 # compute k-mer of testing dataset using k-mer size 15
@@ -146,9 +118,6 @@ kmertest1=[]
 for i in kmertest:
     o=  ' '.join(i) 
     kmertest1.append(o)
-
-
-# In[14]:
 
 
 # read the real dataset and parse the data
@@ -167,9 +136,6 @@ for i in reals:
     realdata1.append(o)
 
 
-# In[ ]:
-
-
 tr_idf_model  = TfidfVectorizer()
 # compute TF-IDF for train, test and real dataset
 tf_idf_vectortrain = tr_idf_model.fit_transform(kmertrain1)
@@ -177,10 +143,7 @@ tf_idf_vetortest = tr_idf_model.transform(kmertest1)
 tf_idf_vecctorreal = tr_idf_model.transform(realdata1)
 
 
-# In[2]:
-
-
-#after classification step in real dataset we need to put the errorfree reads in file and error reads in another file  file 
+#after classification step in real dataset we need to put the errorfree reads in file and error reads in another file  
 def parserealdata(fastqfile2):
     reads=[]
     while True:
@@ -209,9 +172,6 @@ def parserealdata(fastqfile2):
     return reads
 
 
-# In[ ]:
-
-
 # train our dataset using naive base classifier 
 nb = MultinomialNB(alpha=0.1)
 nb.fit(tf_idf_vectortrain,ytrain)
@@ -233,9 +193,6 @@ d2=(dict(d1))
 tru=open("truereadsnb.txt","w")
 fal=open("faleereadsnb.txt","w")
 result=parserealdata(real)
-
-
-# In[ ]:
 
 
 # train our dataset using support vector machine classifier 
@@ -261,9 +218,6 @@ real=open("/home/citc/data/frag.fastq")
 result=parserealdata(real)
 
 
-# In[ ]:
-
-
 # train our dataset using random forest classifier 
 classifier = RandomForestClassifier()
 classifier.fit(tf_idf_vectortrain,ytrain)
@@ -276,7 +230,7 @@ classification_report(ytest,y_pred)
 #to test our real dataset
 per1=classifier.predict(tf_idf_vecctorreal)
 
-#after classificatio step in real dataset we need to put the errorferr reads in file and error reead to file 
+#after classificatio step in real dataset we need to put the errorferr reads in file and error reads to file 
 realdataname=parsename(real)
 listper1 = per1.tolist()
 d1=zip(realdataname,listper1)
@@ -284,10 +238,6 @@ d2=(dict(d1))
 tru=open("truereadsrf.txt","w")
 fal=open("faleereadsrf.txt","w")
 result=parserealdata(real)
-
-
-# In[ ]:
-
 
 # train our dataset using logistic regration
 classifier_tfidf = LogisticRegression()
@@ -309,9 +259,6 @@ d2=(dict(d1))
 tru=open("truereadslr.txt","w")
 fal=open("faleereadslr.txt","w")
 result=parserealdata(real)
-
-
-# In[ ]:
 
 
 #train our dataset using xgboost
@@ -340,34 +287,3 @@ d2=(dict(d1))
 tru=open("truereadsxgb.txt","w")
 fal=open("faleereadsxgb.txt","w")
 result=parserealdata(real)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
