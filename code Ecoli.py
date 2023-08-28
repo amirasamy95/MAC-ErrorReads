@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 from sklearn import preprocessing
 import numpy as np
 import pandas as pd
@@ -239,11 +236,11 @@ print(classification_report(ytest,y_pred))
 #to test our real dataset
 per1=nb.predict(tf_idf_vecctorreal)
 
-#after test the real dataset we need to evaluate the performace so we used bwa to align the dataset to the refrence genome and take the result sam file that determind the alignment score(AS) to detrmind the quality of the alighnment of each read and then compute the performance metrics
+#after test the real dataset we need to evaluate the performace so we used bwa to align the dataset to the reference genome and take the result sam file that determind the alignment score(AS) to detrmind the quality of the alighnment of each read and then compute the performance metrics
 
 listper1 = per1.tolist()        
 d1=zip(realda,listper1)
-d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predited value from the NB classifier      
+d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predicted value from the NB classifier      
 
 #we create a csv file to show each read ID ,MD and AS to compute the performance metric 
 rows=[]
@@ -264,7 +261,7 @@ for i,j in d2.items():
     if j == 0:
         x=i 
         for h in range(len(sss1)):
-            if(x==sss1[h][0]): #check if the name of read in key of the dictionary = the name of read in the data from sam file then add in formation of all data in list 
+            if(x==sss1[h][0]): #check if the name of read in key of the dictionary = the name of read in the data from sam file then add the information of all data in list 
                 #print(ss1[h][1])
                 rows.append(sss1[h])
                 
@@ -287,11 +284,11 @@ print(classification_report(ytest,y_pred))
 #to test our real dataset
 per1=model_SVC.predict(tf_idf_vecctorreal)
 
-#after test the real dataset we need to evaluate the performace so we used bwa to align the dataset to the refrence genome and take the result sam file that determind the alignment score(AS) to detrmind the quality of the alighnment of each read and then compute the performance metrics
+#after test the real dataset we need to evaluate the performace so we used bwa to align the dataset to the reference genome and take the result sam file that determind the alignment score(AS) to detrmind the quality of the alighnment of each read and then compute the performance metrics
         
 listper1 = per1.tolist()        
 d1=zip(realda,listper1)
-d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predited value from the SVM classifier      
+d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predicted value from the SVM classifier      
 
 #we create a csv file to show each read ID ,MD and AS to compute the performance metric 
 rows=[]
@@ -333,7 +330,7 @@ per1=classifier.predict(tf_idf_vecctorreal)
 
 listper1 = per1.tolist()        
 d1=zip(realda,listper1)
-d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predited value from the RF classifier      
+d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predicted value from the RF classifier      
 
 #we create a csv file to show each read ID ,MD and AS to compute the performance metric 
 rows=[]
@@ -378,7 +375,7 @@ per1=classifier_tfidf.predict(tf_idf_vecctorreal)
 
 listper1 = per1.tolist()        
 d1=zip(realda,listper1)
-d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predited value from the LR classifier      
+d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predicted value from the LR classifier      
 
 #we create a csv file to show each read ID ,MD and AS to compute the performance metric 
 rows=[]
@@ -428,7 +425,7 @@ per1=classifier.predict(re)
 
 listper1 = per1.tolist()        
 d1=zip(realda,listper1)
-d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predited value from the XGB classifier      
+d2=(dict(d1))  #dictioary cotain the key is reads ID and value is the predicted value from the XGB classifier      
 
 #we create a csv file to show each read ID ,MD and AS to compute the performance metric 
 rows=[]
