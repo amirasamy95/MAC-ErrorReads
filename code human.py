@@ -1,37 +1,20 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[4]:
-
 
 from sklearn import preprocessing
 import numpy as np
-from itertools import product
-from scipy.optimize import linear_sum_assignment
 import pandas as pd
-import collections
 from collections import OrderedDict
 from matplotlib import pyplot as plt
-from matplotlib import cm
-import pylab
-import math
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix,classification_report
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix,classification_report
-
-
-# In[5]:
-
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix,matthews_corrcoef,roc_curve, roc_auc_score
+import joblib
+import seaborn as sns
 
 f=open("/home/citc/data/her1.fastq")
 h=open("/home/citc/data/hfr1.fastq")
 f1=open("/home/citc/data/her2.fastq")
 h1=open("/home/citc/data/hfr2.fastq")
-
-
-# In[6]:
 
 
 def parse(km):
@@ -50,16 +33,10 @@ def parse(km):
     return reads
 
 
-# In[7]:
-
-
 q=parse(h)
 q1=parse(h1)
 w=parse(f)
 w1=parse(f1)
-
-
-# In[8]:
 
 
 for i in q1:
@@ -107,10 +84,6 @@ ytest= np.concatenate((yta1,ytaa2))
 print(len(ytest)) 
 
 
-
-# In[9]:
-
-
 def kmers(read, k):
     counts = []
     num_kmers = len(read) - k + 1
@@ -118,9 +91,6 @@ def kmers(read, k):
        kmer = read[i:i+k]
        counts.append(kmer)
     return counts 
-
-
-# In[10]:
 
 
 train=train1[:700000]
@@ -137,9 +107,6 @@ for i in kme:
     w.append(o)
 
 
-# In[11]:
-
-
 tes=[]
 test=test1[:300000]
 for i in test:
@@ -153,10 +120,6 @@ for i in tes:
     o=  ' '.join(i) 
     r.append(o)
 print(len(r))  
-
-
-# In[12]:
-
 
 real=open("/home/citc/data/h.fastq")
 realdata=parse(real)
@@ -175,16 +138,6 @@ for i in reals:
     re.append(o)
 
 
-# In[ ]:
-
-
-
-    
-  
-
-
-# In[13]:
-
 
 tr_idf_model  = TfidfVectorizer()
 tf_idf_vector = tr_idf_model.fit_transform(w)
@@ -192,46 +145,25 @@ tf_idf_vector = tr_idf_model.fit_transform(w)
 print(type(tf_idf_vector), tf_idf_vector.shape)
 
 
-# In[14]:
-
-
 tf_idf_vec = tr_idf_model.transform(re)
 print(type(tf_idf_vec), tf_idf_vec.shape)
-
-
-# In[15]:
 
 
 tf_idf_vectortest = tr_idf_model.transform(r)
 print(type(tf_idf_vectortest), tf_idf_vectortest.shape)
 
 
-# In[ ]:
-
-
-
-
-
-# In[16]:
-
-
-from sklearn.naive_bayes import MultinomialNB
 nb = MultinomialNB(alpha=0.1)
 nb.fit(tf_idf_vector,ytrain)
 
 
-# In[17]:
-
-
 #to save the model 
-import joblib
 joblib.dump(nb, "./naive_bayes11hum101.joblib")
 
 import sklearn.metrics as metrics
 y_pred = nb.predict(tf_idf_vectortest)
 print('accuracy %s' % metrics.accuracy_score(y_pred, ytest))
       
-import seaborn as sns
 print(classification_report(ytest,y_pred))
 from sklearn.metrics import confusion_matrix,classification_report
 cnf_matrix = confusion_matrix(ytest,y_pred)
@@ -242,87 +174,33 @@ labels = np.asarray(labels).reshape(2,2)
 sns.heatmap(cnf_matrix, annot=labels, fmt='', cmap='Blues')
 
 
-# In[18]:
-
-
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
 precision = precision_score(y_pred, ytest)
 print(precision)
 
-
-# In[22]:
-
-
 recall = recall_score(y_pred, ytest)
 print(recall)
-
-
-# In[21]:
-
 
 f1 = f1_score(y_pred, ytest)
 print('F1 score: %f' % f1)
 
 
-# In[14]:
-
-
-from sklearn.metrics import matthews_corrcoef
 matthews_corrcoef(ytest,y_pred)
-
-
-# In[15]:
-
-
-from sklearn import metrics
-from sklearn.metrics import roc_curve, roc_auc_score
 fpr1 , tpr1, thresholds1 = roc_curve(ytest,y_pred)
 print('roc_auc_score for nb: ', roc_auc_score(ytest,y_pred))
 
-
-# In[16]:
-
-
+#plot roc_curve
 plt.plot([0,1],[0,1], 'k--')
 plt.plot(fpr1, tpr1, label= "NB")
 plt.legend()
 plt.xlabel("False Positive Rate")  
 plt.ylabel("True Positive Rate")
 plt.title('ROC curve')
-#plt.legend(('NB','SVM','LR','XGB','RF'),loc='center right',borderpad=0.25)
 plt.show()
 
-
-# In[15]:
-
-
-import seaborn as sns
-print(classification_report(ytest,y_pred))
-from sklearn.metrics import confusion_matrix,classification_report
-cnf_matrix = confusion_matrix(ytest,y_pred)
-group_names = ['TN','FP','FN','TP']
-group_counts = ["{0:0.0f}".format(value) for value in cnf_matrix.flatten()]
-labels = [f"{v1}\n{v2}" for v1, v2 in zip(group_names,group_counts)]
-labels = np.asarray(labels).reshape(2,2)
-sns.heatmap(cnf_matrix, annot=labels, fmt='', cmap='Blues')
-
-
-# In[19]:
-
-
-import joblib
-loaded_rf1 = joblib.load( './naive_bayes11hum101.joblib')
-
-
-# In[20]:
 
 
 per1=loaded_rf1.predict(tf_idf_vec)
 print(len(per1))
-
-
-# In[21]:
-
 
 def parse(km):
     reads=[]
@@ -339,25 +217,14 @@ def parse(km):
         
     return reads
 
-
-# In[22]:
-
-
 real=open("/home/citc/data/h.fastq")
 realdata=parse(real)
 print(len(realdata))
 listper1 = per1.tolist()
 print(realdata[99998:100000])
 
-
-# In[23]:
-
-
 d1=zip(realdata,listper1)
 d2=(dict(d1))
-
-
-# In[26]:
 
 
 from string import Template
@@ -393,134 +260,4 @@ def parse(km):
 
 
 
-# In[ ]:
-
-
 xxx=parse(real)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[1]:
-
-
-
-
-
-# In[2]:
-
-
-
-
-
-# In[3]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
