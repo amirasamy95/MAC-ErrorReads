@@ -5,6 +5,7 @@ MAC-ErrorReads is a machine learning-assisted classifier for filtering erroneous
 We are using MAC-ErrorReads to classify the sequencing reads as correct or erroneous reads. Before the training step, we extract all k-mers from all reads and compute the TF-IDF for all k-mers as a feature extraction to represent a set of training features that feed into different machine algorithms for classifying each read as erroneous or error-free.
 
 trainning step:
+
 We train our models using simulated datasets.The first genome used in the training process of the MAC-ErrorReads system is Escherichia coli str. K-12 substr. MG1655 (E. coli) with RefSeq accession entry NC_000913. Machine learning models were trained using various k-mer sizes (7, 9, 11, 13, and 15) on a dataset comprising 400,000 correctly reads labeled with 0 and 400,000 erroneous reads labeled with 1. We used a wgsim simulator, which is included within the SAMtools for whole genome simulation, to generate the required number of N=800000 paired-end reads with L=300, and the error rate e=0 for correct reads, and e=1 for erroneous reads. We split the data into training (600000 reads) and testing (200000 reads).
 
 The second genome used in the training process is Staphylococcus aureus (S. aureus) from GAGE, the genome size is 2903081bp and using C=30X, and L=101bp, the total number of paired-end reads used to cover the genome is N≤862301. We trained machine learning models using 400000 correct reads labeled with 1 and 400000 erroneous reads labeled with 0. We split the data into training (600000 reads) and testing (200000 reads). We used k-mer size equals 15.
@@ -28,6 +29,7 @@ To address this issue in the second dataset (S. aureus), we assembled the reads 
 We also computing the alignment rates. the alignment statistics computed using Bowtie2.
 
 To address this issue in the third dataset (H. Chr14), H. Chr14 reference genome using Bowtie 2, and alignment statistics were computed. 
+
 # Tools
 We are using different tools in our experment.
 
@@ -39,19 +41,19 @@ We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble t
 
 We also used QUAST (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.
 
-We are finally using Lighter (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data.We are using Lighter to correct the error reads.
+We finally used all of theis Lighter (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data, CARE2 (https://github.com/fkallen/CARE) Context-Aware Read Error correction for Illumina reads,Fiona (https://github.com/seqan/seqan/tree/main/apps/fiona) a parallel and automatic strategy for read error correction,RECKONER (https://github.com/refresh-bio/RECKONER) Read Error Corrector Based on KMC,BFC (https://github.com/lh3/bfc) High-performance error correction for Illumina resequencing data,karect (https://github.com/aminallam/karect) KAUST Assembly Read Error Correction Tool and pollux (https://github.com/emarinier/pollux) Error correction of second-generation sequencing technologies. we compare all this tools with our model.
 
 
 
 # Data
-We are using three different datasets. The first dataset used in our experiments is Escherichia coli str. K-12 substr. MG1655 (E.coli) with RefSeq accession entry NC_000913. The second dataset used in our experiments is the S. aureus genome from the GAUGE project.
+We are using three different datasets. The first dataset used in our experiments is Escherichia coli str. K-12 substr. MG1655 (E.coli) with RefSeq accession entry NC_000913. The second dataset used in our experiments is the S. aureus genome from the GAUGE project, the third dataset used is Human Chromosome 14 (H. Chr14) from GAGE project.
 
 We are using a simulated dataset to train our models. We used the wgsim simulator, which is included within the SAMtools for whole genome simulation.
 To test our models, we are using simulated and real datasets.
 
-The link to the simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link) to train and test our models
+The link to the E.coli and S. aureus simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link) and the link to theH. Chr14 simulated dataset used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing) to train and test our models.
 
-The first real dataset used to test our models is (E.coli) with accession number SRR625891, and the second real dataset used in our experiments is the S. aureus genome from the GAUGE project.
+The first real dataset used to test our models is (E.coli) with accession number SRR625891,  the second real dataset used in our experiments is the (S. aureus)  from the GAGE project,and the third dataset used is (H. Chr14) from GAGE.
 
 # License
 This repository is under MIT license.
