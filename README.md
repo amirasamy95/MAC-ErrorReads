@@ -35,7 +35,8 @@ We are using different tools in our experment.
 
 We used the wgsim (https://github.com/lh3/wgsim) simulator. Wgsim is a small tool for simulating sequence reads from a reference genome.
 
-We also used the BWA aligner (https://github.com/lh3/bwa) to align the reads to the E. coli reference genome and extract their alignment scores from the resulting SAM files.
+We also used the BWA aligner (https://github.com/lh3/bwa) to align the reads to the E. coli reference genome and extract their alignment scores from the resulting SAM files, and bowtie2
+(https://github.com/BenLangmead/bowtie2) A fast and sensitive gapped read aligner.
 
 We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble the reads that are classified as error-free reads.
 
