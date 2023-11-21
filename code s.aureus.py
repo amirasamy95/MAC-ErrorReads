@@ -145,31 +145,32 @@ tf_idf_vecctorreal = tr_idf_model.transform(realdata1)
 
 #after classification step in real dataset we need to put the errorfree reads in file and error reads in another file  
 def parserealdata(fastqfile2):
-    reads=[]
     while True:
-        firstline=fastqfile2.readline()
+        firstline=km.readline()
         if(len(firstline)==0):
             break
         name=firstline[:].rstrip()
-        seq=fastqfile2.readline().rstrip()
-        kk=fastqfile2.readline().rstrip()
-        qual=fastqfile2.readline().rstrip()
-        reads.append(name)
-        reads.append(seq)
-        reads.append(kk)
-        reads.append(qual)
+        seq=km.readline().rstrip()
+        kk=km.readline().rstrip()
+        qual=km.readline().rstrip()
+        
+        fastq_template = Template(f'$name\n$seq\n$kk\n$qual\n')
+     
         for i,j in d2.items():
            
-            if j==0 and i==reads[0] :
-                for  item in reads:
-                        tru.write(item+"\n")
-            elif j==1 and i==reads[0] : 
-                 for  item in reads:
-                        fal.write(item+"\n")
-              
-        reads=[]
-        
-    return reads
+            if j==0 and i==name:
+                tru.write(fastq_template.substitute(name=name,
+                                         seq=seq,
+                                         kk=kk,
+                                         qual=qual))
+                     
+            elif j==1 and i==name : 
+                fal.write(fastq_template.substitute(name=name,
+                                         seq=seq,
+                                         kk=kk,
+                                         qual=qual))
+
+
 
 
 # train our dataset using naive base classifier 
