@@ -48,6 +48,7 @@ We finally used all of theis Lighter (https://github.com/mourisl/Lighter), a KME
 
 # Data
 
+
 The datasets used in this manuscript are the Escherichia coli str. K-12 substr. MG1655 (E. coli) [GenBank: NC_000913.3], and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR625891. Also, Staphylococcus aureus (S. aureus) and Human Chromosome 14 (H. Chr14) from GAGE with their corresponding real sequencing reads are publicly available from the GAUGE website (http://gage.cbcb.umd.edu/data/).
 
 The link to the E. coli and S. aureus simulated datasets was used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link) and the link to the H. Chr14 simulated dataset was used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing) to train and test our models.
