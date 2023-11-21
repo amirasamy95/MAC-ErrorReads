@@ -191,8 +191,8 @@ realdataname=parsename(real)
 listper1 = per1.tolist()
 d1=zip(realdataname,listper1)
 d2=(dict(d1))
-tru=open("truereadsnb.txt","w")
-fal=open("faleereadsnb.txt","w")
+tru=open("truereadsnb.fastq","w")
+fal=open("faleereadsnb.fastq","w")
 result=parserealdata(real)
 
 
@@ -213,8 +213,8 @@ realdataname=parsename(real)
 listper1 = per1.tolist()
 d1=zip(realdataname,listper1)
 d2=(dict(d1))
-tru=open("truereadssvm.txt","w")
-fal=open("faleereadssvm.txt","w")
+tru=open("truereadssvm.fastq","w")
+fal=open("faleereadssvm.fastq","w")
 real=open("/home/citc/data/frag.fastq")
 result=parserealdata(real)
 
@@ -236,8 +236,8 @@ realdataname=parsename(real)
 listper1 = per1.tolist()
 d1=zip(realdataname,listper1)
 d2=(dict(d1))
-tru=open("truereadsrf.txt","w")
-fal=open("faleereadsrf.txt","w")
+tru=open("truereadsrf.fastq","w")
+fal=open("faleereadsrf.fastq","w")
 result=parserealdata(real)
 
 # train our dataset using logistic regration
@@ -257,13 +257,13 @@ realdataname=parsename(real)
 listper1 = per1.tolist()
 d1=zip(realdataname,listper1)
 d2=(dict(d1))
-tru=open("truereadslr.txt","w")
-fal=open("faleereadslr.txt","w")
+tru=open("truereadslr.fastq","w")
+fal=open("faleereadslr.fastq","w")
 result=parserealdata(real)
 
 
 #train our dataset using xgboost
-clf=XGBClassifier(max_depth=3, learning_rate=0.1, n_estimators=500, objective='binary:logistic', booster='gbtree')
+clf=XGBClassifier(max_depth=3, learning_rate=0.1, n_estimators=500, objective='binary:logistic')
 classifier = Pipeline([
             ('tfidf', TfidfVectorizer()),
             ('clf', XGBClassifier(max_depth=3, n_estimators=300, learning_rate=0.1)),
