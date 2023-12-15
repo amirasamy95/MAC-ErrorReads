@@ -4,7 +4,7 @@ MAC-ErrorReads is a machine-learning-assisted classifier for filtering erroneous
 # Usage
 We are using MAC-ErrorReads to classify the sequencing reads as correct or erroneous reads. Before the training step, we extract all k-mers from all reads and compute the TF-IDF for all k-mers as a feature extraction to represent a set of training features that feed into different machine algorithms for classifying each read as erroneous or error-free.
 
-_trainning step:_
+** trainning step: **
 
 We train our models using simulated datasets. The first genome used in the training process of the MAC-ErrorReads system is Escherichia coli str. K-12 substr. MG1655 (E. coli) with RefSeq accession entry NC_000913. Machine learning models were trained using various k-mer sizes (7, 9, 11, 13, and 15) on a dataset comprising 400,000 correctly read reads labelled with 0 and 400,000 erroneous reads labelled with 1. We used a wgsim simulator, which is included within the SAMtools for whole genome simulation, to generate the required number of N=800000 paired-end reads with L=300 and the error rate e=0 for correct reads and e=1 for erroneous reads. We split the data into training (600,000 reads) and testing (20,0000 reads).
 
