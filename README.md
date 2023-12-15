@@ -12,14 +12,23 @@ The second genome used in the training process is Staphylococcus aureus (S. aure
 
 The third genome used in the training process is Human Chromosome 14 (H. Chr14) from GAGE. The genome size is 88289540 bp, and using C = 30X and L = 101 bp, the total number of paired-end reads used to cover the genome is N≤8828954. We trained the NB machine learning model with k = 11 using 500000 correct reads labelled with 0 and 500000 erroneous reads labelled with 1. We split the data into training (700,000 reads) and testing (30,0000 reads). The NB model is chosen since it demonstrates consistent and strong performance in the classification and assembly results of the previous experiments.
 
+The fourth genome used in the training process is Arabidopsis thaliana chromosome 1 with RefSeq accession entry NC_003070.9. The genome size is 119146348bp, and using C=30X, and L=250bp, the total number of paired-end reads used to cover the genome is N≤14297562. We trained the NB machine learning model with =11 using 200000 correct reads labeled with 0 and 200000 erroneous reads labeled with 1. We split the data into training (300000reads) and testing (100000reads).The NB model is chosen since it demonstrates consistent and strong performance in the classification and assembly results of the previous experiments.
+
+The Fifth genome used in the training process is Metriaclima zebra with RefSeq accession entry GCF_000238955.4, the genome size is 957468680bp, and using C=30X, and L=101bp, the total number of paired-end reads used to cover the genome is N≤284396638. We trained the NB machine learning model with =11 using 500000 correct reads labeled with 0 and 500000 erroneous reads labeled with 1. We split the data into training (700000reads) and testing (300000reads). The NB model is chosen since it demonstrates consistent and strong performance in the classification and assembly results of the previous experiments.
+
 Evaluate step:
 
 To evaluate the efficacy of our trained models, we employed reads obtained from simulated data and real sequencing experiments that corresponded to the previously trained reference genomes.
-The first E. coli dataset used to test the performance of SVM, RF, LR, NB, and XGBoost is the simulated data set, with a total number of paired-end reads of 200000. To evaluate the effectiveness of the E. coli-trained model on reads from real sequencing experiments, we utilised a real dataset with accession number SRR625891.
+The first E. coli dataset used to test the performance of SVM, RF, LR, NB, and XGBoost is the simulated data set, with a total number of paired-end reads of 200,000. To evaluate the effectiveness of the E. coli-trained model on reads from real sequencing experiments, we utilised a real dataset with accession number SRR625891.
 
-The second S. aureus dataset used to test the performance of SVM, RF, LR, NB, and XGBoost is the simulated data set with a total number of paired-end reads of 200000. To evaluate the effectiveness of the S. aureus trained model on reads from real sequencing experiments, we utilised a real dataset from GAUGE for the same genome.
+The second S. aureus dataset used to test the performance of SVM, RF, LR, NB, and XGBoost is the simulated data set with a total number of paired-end reads of 200,000. To evaluate the effectiveness of the S. aureus trained model on reads from real sequencing experiments, we utilised a real dataset from GAUGE for the same genome.
 
 The third Human Chromosome 14 (H. Chr14) dataset used to test the performance of NB is the simulated data set, with a total number of paired-end reads of 300,000. To evaluate the effectiveness of the H. Chr14-trained model on reads from real sequencing experiments, we utilised a real dataset from GAUGE for the same genome.
+
+the fourth Arabidopsis thaliana chromosome 1 dataset used to test the performance of NB is the simulated data set,with a total number of paired-end reads of 100,000. To evaluate the effectiveness of the Arabidopsis thaliana chromosome 1 trained model on real sequencing data, we utilized a real dataset with accession number ERR2173372, targeting the same genome.
+
+The fifth Metriaclima zebra  dataset used to test the performance of NB is the simulated data set, with a total number of paired-end reads of 300,000.To evaluate the effectiveness of the Metriaclima zebra trained model on real sequencing data, we utilized a real dataset with accession number SRR077289, targeting the same genome. 
+
 
 The real reads in the sequencing experiments lacked explicit labels, and their accuracy levels were unknown beforehand.
 
@@ -30,6 +39,9 @@ We are also computing the alignment rates. the alignment statistics computed usi
 
 To address this issue in the third dataset (H. Chr14), the H. Chr14 reference genome was used using Bowtie 2, and alignment statistics were computed.
 
+To address this issue in the fourth dataset,the Arabidopsis thaliana reference genome was used using Bowtie 2, and alignment statistics were computed.
+
+To address this issue in the fifth dataset ,the  Metriaclima zebra reference genome was used using Bowtie 2, and alignment statistics were computed.
 # Tools
 We are using different tools in our experiment.
 
@@ -49,9 +61,9 @@ We finally used all of theis Lighter (https://github.com/mourisl/Lighter), a KME
 # Data
 
 
-The datasets used in this manuscript are the Escherichia coli str. K-12 substr. MG1655 (E. coli) [GenBank: NC_000913.3], and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR625891. Also, Staphylococcus aureus (S. aureus) and Human Chromosome 14 (H. Chr14) from GAGE with their corresponding real sequencing reads are publicly available from the GAUGE website (http://gage.cbcb.umd.edu/data/).
+The datasets used in this manuscript are the Escherichia coli str. K-12 substr. MG1655 (E. coli) [GenBank: NC_000913.3], and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR625891. Also, Staphylococcus aureus (S. aureus) and Human Chromosome 14 (H. Chr14) from GAGE with their corresponding real sequencing reads are publicly available from the GAUGE website (http://gage.cbcb.umd.edu/data/). Also,  Arabidopsis thaliana and its corresponding real sequencing run is publicly available at NCBI SRA with accession number ERR2173372. Also, Metriaclima zebra and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR077289.
 
-The link to the E. coli and S. aureus simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link) and the link to the H. Chr14 simulated dataset used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing) to train and test our models.
+The link to the E. coli and S. aureus simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link) , the link to the H. Chr14 simulated dataset used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing),the link to Arabidopsis thaliana simulated dataset(https://drive.google.com/file/d/1W0wkXSk8LlM7XwIGvG0GWXfQLex9nPmg/view?usp=sharing)  and the link to  Metriaclima zebra simulated dataset(https://drive.google.com/file/d/1XIbIkdnZyJ6LnmtK1Y2fxnvv8Wks3pZu/view?usp=drive_link) to train and test our models
 
 
 # License
