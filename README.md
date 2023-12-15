@@ -40,9 +40,9 @@
 
 **We are using different tools in our experiment.**
 
-<p align="justify">We used the wgsim (https://github.com/lh3/wgsim) simulator. Wgsim is a small tool for simulating sequence reads from a reference genome. We also used the BWA aligner (https://github.com/lh3/bwa) to align the reads to the E. coli reference genome and extract their alignment scores from the resulting SAM files, and bowtie2 (https://github.com/BenLangmead/bowtie2) A fast and sensitive gapped read aligner. </p>
+<p align="justify">We used the wgsim (https://github.com/lh3/wgsim) simulator. Wgsim is a small tool for simulating sequence reads from a reference genome, BWA aligner (https://github.com/lh3/bwa) to align the reads to the E. coli reference genome and extract their alignment scores from the resulting SAM files, and bowtie2 (https://github.com/BenLangmead/bowtie2) A fast and sensitive gapped read aligner. </p>
 
-<p align="justify">We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble the reads that are classified as error-free reads.We also used QUAST (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.</p>
+<p align="justify">We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble the reads that are classified as error-free reads, QUAST (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.</p>
 
 <p align="justify">We finally used all of theis: Lighter (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data, CARE2 (https://github.com/fkallen/CARE) Context-Aware Read Error correction for Illumina reads, Fiona (https://github.com/seqan/seqan/tree/main/apps/fiona) a parallel and automatic strategy for read error correction, RECKONER (https://github.com/refresh-bio/RECKONER) Read Error Corrector Based on KMC,BFC (https://github.com/lh3/bfc) High-performance error correction for Illumina resequencing data, karect (https://github.com/aminallam/karect) KAUST Assembly Read Error Correction Tool and pollux (https://github.com/emarinier/pollux) Error correction of second-generation sequencing technologies. we compare all this tools with our model.</p>
 
