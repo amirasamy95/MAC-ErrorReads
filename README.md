@@ -56,10 +56,15 @@ We also used **QUAST** (https://github.com/ablab/quast), the assembly evaluation
 
 We finally used all of theis:
 **Lighter** (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data,
+
 **CARE2** (https://github.com/fkallen/CARE) Context-Aware Read Error correction for Illumina reads, 
+
 **Fiona** (https://github.com/seqan/seqan/tree/main/apps/fiona) a parallel and automatic strategy for read error correction,
+
 **RECKONER** (https://github.com/refresh-bio/RECKONER) Read Error Corrector Based on KMC,BFC (https://github.com/lh3/bfc) High-performance error correction for Illumina resequencing data,
+
 **karect** (https://github.com/aminallam/karect) KAUST Assembly Read Error Correction Tool and 
+
 **pollux** (https://github.com/emarinier/pollux) Error correction of second-generation sequencing technologies. we compare all this tools with our model.
 
 
