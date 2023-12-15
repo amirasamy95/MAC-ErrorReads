@@ -57,7 +57,10 @@
 
 <p align="justify">The datasets used in this manuscript are the Escherichia coli str. K-12 substr. MG1655 (E. coli) [GenBank: NC_000913.3], and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR625891. Also, Staphylococcus aureus (S. aureus) and Human Chromosome 14 (H. Chr14) from GAGE with their corresponding real sequencing reads are publicly available from the GAUGE website (http://gage.cbcb.umd.edu/data/). Also,  Arabidopsis thaliana and its corresponding real sequencing run is publicly available at NCBI SRA with accession number ERR2173372. Also, Metriaclima zebra and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR077289.</p>
 
-<p align="justify">The link to the E. coli and S. aureus simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link), the link to the H. Chr14 simulated dataset used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing), the link to Arabidopsis thaliana simulated dataset (https://drive.google.com/file/d/1W0wkXSk8LlM7XwIGvG0GWXfQLex9nPmg/view?usp=sharing) and the link to  Metriaclima zebra simulated dataset (https://drive.google.com/file/d/1XIbIkdnZyJ6LnmtK1Y2fxnvv8Wks3pZu/view?usp=drive_link) to train and test our models</p>
+<p align="justify">The link to the E. coli and S. aureus simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link).
+The link to the H. Chr14 simulated dataset used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing).</p>
+  
+<p align="justify"> The link to Arabidopsis thaliana simulated dataset (https://drive.google.com/file/d/1W0wkXSk8LlM7XwIGvG0GWXfQLex9nPmg/view?usp=sharing) and the link to  Metriaclima zebra simulated dataset (https://drive.google.com/file/d/1XIbIkdnZyJ6LnmtK1Y2fxnvv8Wks3pZu/view?usp=drive_link) to train and test our models.</p>
 
 
 # License
