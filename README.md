@@ -1,5 +1,5 @@
 # MAC-ErrorReads
-MAC-ErrorReads is a machine-learning-assisted classifier for filtering erroneous NGS reads. It converts the process of filtering erroneous NGS reads into a machine learning classification problem. MAC-ErrorReads learns a mapping function F that transforms the input feature space X extracted from each sequencing read into a binary label classification Y of this read, as (1) for an erroneous read and (0) for a correct one.
+<p align="justify"> MAC-ErrorReads is a machine-learning-assisted classifier for filtering erroneous NGS reads. It converts the process of filtering erroneous NGS reads into a machine learning classification problem. MAC-ErrorReads learns a mapping function F that transforms the input feature space X extracted from each sequencing read into a binary label classification Y of this read, as (1) for an erroneous read and (0) for a correct one. Your </p>
 
 # Usage
 We are using MAC-ErrorReads to classify the sequencing reads as correct or erroneous reads. Before the training step, we extract all k-mers from all reads and compute the TF-IDF for all k-mers as a feature extraction to represent a set of training features that feed into different machine algorithms for classifying each read as erroneous or error-free.
@@ -55,6 +55,7 @@ We also used **Velvet assembler** (https://github.com/dzerbino/velvet) to assemb
 We also used **QUAST** (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.
 
 We finally used all of theis:
+
 **Lighter** (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data,
 
 **CARE2** (https://github.com/fkallen/CARE) Context-Aware Read Error correction for Illumina reads, 
