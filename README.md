@@ -40,13 +40,9 @@
 
 **We are using different tools in our experiment.**
 
-<p align="justify">We used the wgsim (https://github.com/lh3/wgsim) simulator. Wgsim is a small tool for simulating sequence reads from a reference genome.</p>
+<p align="justify">We used the wgsim (https://github.com/lh3/wgsim) simulator. Wgsim is a small tool for simulating sequence reads from a reference genome. We also used the BWA aligner (https://github.com/lh3/bwa) to align the reads to the E. coli reference genome and extract their alignment scores from the resulting SAM files, and bowtie2 (https://github.com/BenLangmead/bowtie2) A fast and sensitive gapped read aligner. </p>
 
-<p align="justify"> We also used the BWA aligner (https://github.com/lh3/bwa) to align the reads to the E. coli reference genome and extract their alignment scores from the resulting SAM files, and bowtie2 (https://github.com/BenLangmead/bowtie2) A fast and sensitive gapped read aligner. </p>
-
-<p align="justify">We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble the reads that are classified as error-free reads.</p>
-
-<p align="justify">We also used QUAST (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.</p>
+<p align="justify">We also used Velvet assembler (https://github.com/dzerbino/velvet) to assemble the reads that are classified as error-free reads.We also used QUAST (https://github.com/ablab/quast), the assembly evaluation tool, to evaluate the assembly results.</p>
 
 <p align="justify">We finally used all of theis: Lighter (https://github.com/mourisl/Lighter), a KMER-based error correction method for genome sequencing data, CARE2 (https://github.com/fkallen/CARE) Context-Aware Read Error correction for Illumina reads, Fiona (https://github.com/seqan/seqan/tree/main/apps/fiona) a parallel and automatic strategy for read error correction, RECKONER (https://github.com/refresh-bio/RECKONER) Read Error Corrector Based on KMC,BFC (https://github.com/lh3/bfc) High-performance error correction for Illumina resequencing data, karect (https://github.com/aminallam/karect) KAUST Assembly Read Error Correction Tool and pollux (https://github.com/emarinier/pollux) Error correction of second-generation sequencing technologies. we compare all this tools with our model.</p>
 
@@ -55,7 +51,7 @@
 # Data
 
 
-<p align="justify">The datasets used in this manuscript are the Escherichia coli str. K-12 substr. MG1655 (E. coli) [GenBank: NC_000913.3], and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR625891. Also, Staphylococcus aureus (S. aureus) and Human Chromosome 14 (H. Chr14) from GAGE with their corresponding real sequencing reads are publicly available from the GAUGE website (http://gage.cbcb.umd.edu/data/). Also,  Arabidopsis thaliana and its corresponding real sequencing run is publicly available at NCBI SRA with accession number ERR2173372. Also, Metriaclima zebra and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR077289.</p>
+<p align="justify">The datasets used in this manuscript are the Escherichia coli str. K-12 substr. MG1655 (E. coli) [GenBank: NC_000913.3], and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR625891. Staphylococcus aureus (S. aureus) and Human Chromosome 14 (H. Chr14) from GAGE with their corresponding real sequencing reads are publicly available from the GAUGE website (http://gage.cbcb.umd.edu/data/).  Arabidopsis thaliana and its corresponding real sequencing run is publicly available at NCBI SRA with accession number ERR2173372. Also, Metriaclima zebra and its corresponding real sequencing run is publicly available at NCBI SRA with accession number SRR077289.</p>
 
 <p align="justify">The link to the E. coli and S. aureus simulated datasets used (https://drive.google.com/file/d/10nEAroKXB9uUEFjL8eZ6tle8wr5GryzX/view?usp=drive_link).
 The link to the H. Chr14 simulated dataset used (https://drive.google.com/file/d/1XRUYbr7-ytzdYM_kLhkL6c2UZW5h48lV/view?usp=sharing).</p>
